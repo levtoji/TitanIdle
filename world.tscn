@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7bufxn4ch87l"]
+[gd_scene load_steps=3 format=3 uid="uid://b7bufxn4ch87l"]
+
+[ext_resource type="PackedScene" uid="uid://bx3fr5cfgg46e" path="res://UI/header_element.tscn" id="1_hch81"]
 
 [sub_resource type="TileSet" id="TileSet_m0aft"]
 tile_shape = 3
@@ -9,3 +11,57 @@ tile_size = Vector2i(32, 32)
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_m0aft")
 format = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Header" type="Panel" parent="UI"]
+custom_minimum_size = Vector2(0, 30)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HeaderHBox" type="HBoxContainer" parent="UI/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Electricity" parent="UI/Header/HeaderHBox" instance=ExtResource("1_hch81")]
+layout_mode = 2
+
+[node name="Label" parent="UI/Header/HeaderHBox/Electricity" index="0"]
+text = "Electricity
+"
+
+[node name="Value" parent="UI/Header/HeaderHBox/Electricity" index="1"]
+text = "0
+"
+
+[node name="Temperature" parent="UI/Header/HeaderHBox" instance=ExtResource("1_hch81")]
+layout_mode = 2
+
+[node name="Label" parent="UI/Header/HeaderHBox/Temperature" index="0"]
+text = "Temperature"
+
+[node name="Value" parent="UI/Header/HeaderHBox/Temperature" index="1"]
+text = "0"
+
+[node name="O2" parent="UI/Header/HeaderHBox" instance=ExtResource("1_hch81")]
+layout_mode = 2
+
+[node name="Label" parent="UI/Header/HeaderHBox/O2" index="0"]
+text = "O2"
+
+[node name="Value" parent="UI/Header/HeaderHBox/O2" index="1"]
+text = "0"
+
+[node name="SideMenu" type="Node2D" parent="UI"]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[editable path="UI/Header/HeaderHBox/Electricity"]
+[editable path="UI/Header/HeaderHBox/Temperature"]
+[editable path="UI/Header/HeaderHBox/O2"]
